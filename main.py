@@ -1,11 +1,30 @@
 import pygame
 
-window = pygame.display.set_mode((800, 600))
+
+class Object(pygame.sprite.Sprite):
+    def __init__(self, img, x, y, speed):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.speed = speed
+
+
+width = 800
+height = 600
+
+window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Рецепты слаймов от Паймон") #Название программы
+
+bg = pygame.transform.scale(pygame.image.load("images/bg.png"), (width, height))
+
+
 run = True
 
-while run:
 
+while run:
+    window.blit(bg, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False 
@@ -17,7 +36,6 @@ while run:
 
 
 
-   
-   
+
    
     pygame.display.update()
